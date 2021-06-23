@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function DeckView() {
+export default function AddDeck() {
   return (
     <View style={styles.container}>
-      <Text>DeckView</Text>
+      <Text>Add Deck</Text>
     </View>
   );
 }

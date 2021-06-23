@@ -1,15 +1,15 @@
 import DeckList from './DeckList';
 import DeckListItem from './DeckListItem';
-import DeckView from './DeckView';
-import NewDeckView from './NewDeckView';
-import NewQuestionView from './NewQuestionView';
-import QuizView from './QuizView';
+import Deck from './Deck';
+import AddDeck from './AddDeck';
+import AddQuestion from './AddQuestion';
+import Quiz from './Quiz';
 
 export {
     DeckList,
     DeckListItem,
-    DeckView,
-    NewDeckView,
-    NewQuestionView,
-    QuizView
+    Deck,
+    AddDeck,
+    AddQuestion,
+    Quiz
 };

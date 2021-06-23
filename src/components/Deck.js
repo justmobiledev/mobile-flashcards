@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function NewQuestionView() {
+export default function Deck() {
   return (
     <View style={styles.container}>
-      <Text>NewQuestionView</Text>
+      <Text>DeckView</Text>
     </View>
   );
 }
