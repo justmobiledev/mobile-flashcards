@@ -1,0 +1,44 @@
+{
+    "React": {
+      "title": "React",
+      "questions": [
+        {
+          "question": "How to detect app state in React Native?",
+          "answer": "Using AppState from react native"
+        },
+        {
+          "question": "What is a PureComponent?",
+          "answer": "It checks whether the state or props changed using shallow equality comparison. If the props and the state hasn’t changed, the component is not re-rendered."
+        },
+        {
+            "question": "What is flex-box stretch used for?",
+            "answer": "stretch causes flex child items to take up the full width of the cross axis."
+          },
+          {
+            "question": "What is flex-box space-around used for?",
+            "answer": "space-around flex items are spaced equidistant along the Main Axis."
+          }
+      ]
+    },
+    "JavaScript": {
+      "title": "JavaScript",
+      "questions": [
+        {
+          "question": "What is a closure?",
+          "answer": "The combination of a function and the lexical environment within which that function was declared."
+        },
+        {
+          "question": "Inside a html file, in which tag is JavaScript placed?",
+          "answer": "Inside the <script> tag."
+        },
+        {
+          "question": "Where is the correct section to add JavaScript in HTML?",
+          "answer": "Inside the head section."
+        },
+        {
+          "question": "How to you show an alrt popup in JavaScript?",
+          "answer": "Using the alert() function."
+        }
+      ]
+    }
+  }

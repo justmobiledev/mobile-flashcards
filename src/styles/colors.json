@@ -1,5 +1,7 @@
 
 {
     "purple": "purple",
-    "white": "white"
+    "white": "white",
+    "gray": "gray",
+    "textColor": "#A2A4A8"
 }
