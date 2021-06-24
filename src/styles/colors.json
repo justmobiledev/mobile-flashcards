@@ -3,5 +3,6 @@
     "purple": "purple",
     "white": "white",
     "gray": "gray",
-    "textColor": "#A2A4A8"
+    "titleColor": "#87898C",
+    "bodyColor": "#A2A4A8"
 }
