@@ -2,7 +2,11 @@
 {
     "purple": "purple",
     "white": "white",
-    "gray": "gray",
+    "gray": "#CCCCCC",
     "titleColor": "#87898C",
-    "bodyColor": "#A2A4A8"
+    "bodyColor": "#A2A4A8",
+    "headerBackground": "#333B46",
+    "teal": "#28AFC6",
+    "orange": "#F1793F",
+    "darkBlue": "#0B658C"
 }

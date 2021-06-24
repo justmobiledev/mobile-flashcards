@@ -4,6 +4,7 @@ import Deck from './Deck';
 import AddDeck from './AddDeck';
 import AddQuestion from './AddQuestion';
 import Quiz from './Quiz';
+import MyButton from './MyButton'
 
 export {
     DeckList,
@@ -11,5 +12,6 @@ export {
     Deck,
     AddDeck,
     AddQuestion,
-    Quiz
+    Quiz,
+    MyButton
 };
