@@ -9,21 +9,18 @@ import {DeckContext} from '../contexts/useDeckContext';
 
 
 export default function DeckList({navigation}) {
-  //const context = useSharedDeckContext();
   const { isLoading, decks, setSelectedDeck } = useContext(DeckContext);
-
-  console.log(isLoading);
-  console.log('DeckList decks: ',decks);
 
  const _onItemClicked = deck => {
    setSelectedDeck(deck.item);
+   
   // Navigate to deck details
    navigation.navigate(DECK_SCREEN);
  }
 
   const renderDeck = it => {
     const deck = it.item;
-    console.log('renderDeck ',deck);
+
     return (
       <DeckListItem deck={deck} onItemClicked={() => _onItemClicked(it)}/>
     )

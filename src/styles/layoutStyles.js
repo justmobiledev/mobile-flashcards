@@ -10,7 +10,7 @@ export const layoutStyles = StyleSheet.create({
     },
     headerLayout: {
       flexDirection: 'row',
-      minHeight: 80,
+      minHeight: 60,
       padding: 24,
       justifyContent: 'center',
       alignItems: 'center',

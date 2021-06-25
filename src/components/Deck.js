@@ -6,11 +6,8 @@ import MyButton from './MyButton';
 import {ADD_QUESTION_SCREEN, QUIZ_SCREEN} from '../navigation/ScreenNames';
 import {DeckContext} from '../contexts/useDeckContext';
 
-export default function Deck({route, navigation}) {
-  //const {title} = route.params;
-  //console.log('decks: ',decks);
+export default function Deck({navigation}) {
   const { selectedDeck } = useContext(DeckContext);
-  console.log('selectedDeck ',selectedDeck);
   const questionCount = selectedDeck?.questions?.length || 0;
 
   const onAddQuestionPressed = () => {
@@ -20,7 +17,7 @@ export default function Deck({route, navigation}) {
 
   const onStartQuizPressed = () => {
       // Navigate to Start Quiz
-      navigation.navigate(QUIZ_SCREEN,{deck: deck});
+      navigation.navigate(QUIZ_SCREEN);
   }
 
   return (

@@ -1,11 +1,8 @@
-import React, {useEffect, useState} from 'react';
-import { Text, TouchableOpacity, StyleSheet, Button, View } from 'react-native';
+import React, {useEffect} from 'react';
+import { StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {MainStackNavigator} from './src/navigation';
-import {DeckList, AddDeck} from './src/components';
-import { AppProvider } from './src/contexts/AppContext';
 import Spinner from 'react-native-loading-spinner-overlay';
-//import {useSharedDeckContext} from './src/contexts/AppContext';
 import {useDeckContext, DeckContext} from './src/contexts/useDeckContext';
 
 export default function App() {
@@ -22,11 +19,14 @@ export default function App() {
         <NavigationContainer>
           <MainStackNavigator/>
         </NavigationContainer>
-        <Spinner
-            visible={isLoading}
+        {
+          isLoading && 
+            <Spinner
+            visible={true}
             textContent={'Loading...'}
             textStyle={styles.spinnerTextStyle}
           />
+        }
       </View>
     </DeckContext.Provider>
   );

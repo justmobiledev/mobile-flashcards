@@ -18,11 +18,11 @@ export const textStyles = StyleSheet.create({
     color: colors.bodyColor,
 },
     titleStyle: {
-        fontSize: 16,
+        fontSize: 20,
       color: colors.titleColor
     },
     bodyStyle: {
-        fontSize: 12,
+        fontSize: 16,
       color: colors.bodyColor,
     },
     buttonTextStyle: {

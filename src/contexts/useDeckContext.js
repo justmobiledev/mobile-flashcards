@@ -69,21 +69,3 @@ export function useDeckContext() {
         addDeck
     }
 }
-/* export function useDeckContext() {
-    const [decks, setDecks] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
-
-    const addQuestion  = useCallback((test) => {
-        console.log(test);
-    });
-
-
-
-    return {
-        decks,
-        isLoading,
-        setDecks,
-        loadDecks,
-        addQuestion,
-    };
-}*/

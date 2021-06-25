@@ -31,7 +31,7 @@ export default function AddQuestion({navigation}) {
       });
       setTimeout(() => {
         navigation.pop();
-      },1000);
+      },1500);
     }).catch((error) => {
       Toast.show({
         position: 'bottom',
@@ -56,7 +56,7 @@ export default function AddQuestion({navigation}) {
               placeholder="Ask a question"
               keyboardType="default"
             />
-            <Text style={[textStyles.titleStyle,{marginTop: 24}]}>Add your answer:</Text>
+            <Text style={[textStyles.titleStyle,{marginTop: 12}]}>Add your answer:</Text>
             <TextInput
               style={styles.textInputStyle}
               onChangeText={onChangeAnswer}

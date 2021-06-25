@@ -1,5 +1,3 @@
-
-
 export const MAIN = "Mobile Flashcards";
 export const DECK_LIST_SCREEN = "Deck List";
 export const DECK_SCREEN= "Deck";

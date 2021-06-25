@@ -1,9 +1,8 @@
 import * as React from 'react';
-import { Text, TouchableOpacity, StyleSheet, Button, View } from 'react-native';
+import { Text, TouchableOpacity, StyleSheet, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {DeckList, AddDeck} from '../components';
 import colors from '../styles/colors.json';
-import { AntDesign } from '@expo/vector-icons';
 import { MaterialCommunityIcons } from '@expo/vector-icons'; 
 import { EvilIcons } from '@expo/vector-icons'; 
 
@@ -47,7 +46,7 @@ function MainTabBar({ state, descriptors, navigation }) {
                 (<MaterialCommunityIcons name="cards" size={24} color="white" />) : 
                 (<EvilIcons name="plus" size={24} color="white" />)
               }
-              <Text style={{ marginTop: 8, fontSize: 16, color: isFocused ? '#ffffff' : '#222' }}>
+              <Text style={{ marginTop: 8, fontSize: 16, color: isFocused ? '#ffffff' : '#cccccc' }}>
                 {label}
               </Text>
             </TouchableOpacity>
@@ -60,14 +59,14 @@ function MainTabBar({ state, descriptors, navigation }) {
   const styles = StyleSheet.create({
     deckListTabStyle: {
       flex: 1,
-        height: 120,
+        height: 80,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: colors.teal,
     },
     addDeckTabStyle: {
       flex: 1,
-      height: 120,
+      height: 80,
       justifyContent: 'center',
       alignItems: 'center', 
       backgroundColor: colors.orange,
