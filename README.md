@@ -1,16 +1,15 @@
 # mobile-flashcards
 Udacity Mobile Flashcards project
 
-
-#  Installation
-From the root directory, run
+#  To install:
+From the root directory:
 
 npm install
 cd ios  
 pod install
 cd ..
 
-#  Running
+#  To run:
 Android:
 npx react-native run-android
 
