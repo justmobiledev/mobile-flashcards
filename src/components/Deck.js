@@ -1,19 +1,21 @@
-import React from 'react';
-import { SafeAreaView, StyleSheet, Text, View, Button} from 'react-native';
-import colors from '../styles/colors.json';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import React, {useContext} from 'react';
+import { SafeAreaView, StyleSheet, Text, View} from 'react-native';
 import {textStyles} from '../styles/textStyles';
 import {layoutStyles} from '../styles/layoutStyles';
 import MyButton from './MyButton';
 import {ADD_QUESTION_SCREEN, QUIZ_SCREEN} from '../navigation/ScreenNames';
+import {DeckContext} from '../contexts/useDeckContext';
 
 export default function Deck({route, navigation}) {
-  const {deck} = route.params;
-  const questionCount = deck?.questions?.length || 0;
+  //const {title} = route.params;
+  //console.log('decks: ',decks);
+  const { selectedDeck } = useContext(DeckContext);
+  console.log('selectedDeck ',selectedDeck);
+  const questionCount = selectedDeck?.questions?.length || 0;
 
   const onAddQuestionPressed = () => {
       // Navigate to Add Question
-    navigation.navigate(ADD_QUESTION_SCREEN,{deck: deck});
+    navigation.navigate(ADD_QUESTION_SCREEN);
   }
 
   const onStartQuizPressed = () => {
@@ -24,11 +26,11 @@ export default function Deck({route, navigation}) {
   return (
     <SafeAreaView style={layoutStyles.screenLayout}>
       <View style={layoutStyles.headerLayout}>
-        <Text style={textStyles.headerStyle}>Deck: {deck?.title || ''}</Text>
+        <Text style={textStyles.headerStyle}>Deck: {selectedDeck?.title || ''}</Text>
       </View>
       <View style={layoutStyles.contentLayout}>
         <View style={styles.deckInfoLayout}>
-            <Text style={textStyles.largeTitleStyle}>{deck?.title || ''}</Text>
+            <Text style={textStyles.largeTitleStyle}>{selectedDeck?.title || ''}</Text>
             <Text style={textStyles.largeSubTitleStyle}>{questionCount} Questions</Text>
           </View>
           <View style={styles.buttonLayout}>

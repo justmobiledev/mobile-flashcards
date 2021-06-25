@@ -14,6 +14,9 @@ export default function MyButton({title, isPrimary, iconType, onPress}) {
         else if (iconType === 'add') {
             return <AntDesign name="pluscircleo" size={20} color="white" />
         }
+        else if (iconType === 'save') {
+            return <AntDesign name="save" size={20} color="white" />
+        }
         else {
             return null;
         }

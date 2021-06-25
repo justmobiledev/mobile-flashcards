@@ -2,6 +2,10 @@ import * as React from 'react';
 import { Text, TouchableOpacity, StyleSheet, Button, View } from 'react-native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {DeckList, AddDeck} from '../components';
+import colors from '../styles/colors.json';
+import { AntDesign } from '@expo/vector-icons';
+import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import { EvilIcons } from '@expo/vector-icons'; 
 
 function MainTabBar({ state, descriptors, navigation }) {
     return (
@@ -36,9 +40,14 @@ function MainTabBar({ state, descriptors, navigation }) {
               accessibilityLabel={options.tabBarAccessibilityLabel}
               testID={options.tabBarTestID}
               onPress={onPress}
-              style={{ flex: 1, height: 60 }}
+              style={index == 0 ? styles.deckListTabStyle : styles.addDeckTabStyle}
             >
-              <Text style={{ color: isFocused ? '#673ab7' : '#222' }}>
+             {
+                index == 0 ?
+                (<MaterialCommunityIcons name="cards" size={24} color="white" />) : 
+                (<EvilIcons name="plus" size={24} color="white" />)
+              }
+              <Text style={{ marginTop: 8, fontSize: 16, color: isFocused ? '#ffffff' : '#222' }}>
                 {label}
               </Text>
             </TouchableOpacity>
@@ -47,6 +56,23 @@ function MainTabBar({ state, descriptors, navigation }) {
       </View>
     );
   }
+
+  const styles = StyleSheet.create({
+    deckListTabStyle: {
+      flex: 1,
+        height: 120,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.teal,
+    },
+    addDeckTabStyle: {
+      flex: 1,
+      height: 120,
+      justifyContent: 'center',
+      alignItems: 'center', 
+      backgroundColor: colors.orange,
+    }
+  });
   
   const Tab = createBottomTabNavigator();
 

@@ -3,7 +3,7 @@ import AsyncStorage from '@react-native-community/async-storage';
 const DECKS = "@MobileFlashcards:DECKS";
 
 // loads the initial decks database
-export const setDecks = (decks) => {
+export const dbSetDecks = (decks) => {
     return new Promise(async(resolve, reject) => {
         try {
             await AsyncStorage.setItem(
@@ -19,7 +19,7 @@ export const setDecks = (decks) => {
 }
 
 // return all of the decks along with their titles, questions, and answers
-export const getDecks = () => {
+export const dbGetDecks = () => {
     return new Promise(async(resolve, reject) => {
         try {
             const decks = await AsyncStorage.getItem(DECKS);
@@ -35,30 +35,79 @@ export const getDecks = () => {
 }
 
 // take in a single id argument and return the deck associated with that id
-export const getDeck = async (id) => {
-    
+export const dbGetDeck = async (id) => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            dbGetDecks().then((decks) => {
+                const deck = decks[id];
+                resolve(deck);
+            }).catch((error) => {
+                console.log('Unable to load decks: '+error);
+                reject(error);
+            });
+        } catch (error) {
+            console.log('Failed to get decks, error: '+error);
+            reject(error);
+        }
+    });
 }
 
 // take in a single title argument and add it to the decks
-export const saveDeckTitle = async (id, title) => {
-    try {
-        await AsyncStorage.setItem(
-            DECKS,
-          'I like to save it.'
-        );
-      } catch (error) {
-        // Error saving data
-      }
+export const dbAddDeck = async (title) => {
+    return new Promise((resolve, reject) => {
+        try {
+            dbGetDecks().then((decks) => {
+                const newDeck = {title: title, questions: []};
+                let updatedDecks = {...decks};
+                updatedDecks[title] = newDeck;
+    
+                // Save decks
+                dbSetDecks(updatedDecks).then(() => {
+                    console.log('Decks saved successfully');
+                    resolve(updatedDecks);
+                }).catch((error) => {
+                    console.log('Failed to save decks, error: '+error);
+                    reject(error);
+                });
+              }).catch((error) => {
+                console.log('Unable to load decks: '+error);
+                reject(error);
+              });
+          } catch (error) {
+            console.log('Failed to get decks, error: '+error);
+            reject(error);
+          }
+    });
 }
 
 // take in two arguments, title and card, and will add the card to the list of questions for the deck with the associated title
-export const addCardToDeck = async(title, card) => {
-    try {
-        await AsyncStorage.setItem(
-          '@MySuperStore:key',
-          'I like to save it.'
-        );
-      } catch (error) {
-        // Error saving data
-      }
+export const dbAddCardToDeck = async(title, card) => {
+    return new Promise((resolve, reject) => {
+        try {
+            dbGetDecks().then((decks) => {
+                const deck = decks[title];
+                if (deck) {
+                    // add question
+                    deck.questions.push(card);
+                }
+                let updatedDecks = {...decks};
+                updatedDecks[title] = deck;
+    
+                // Save decks
+                dbSetDecks(updatedDecks).then(() => {
+                    console.log('Card saved successfully');
+                    resolve(updatedDecks);
+                }).catch((error) => {
+                    console.log('Failed to save decks, error: '+error);
+                    reject(error);
+                });
+              }).catch((error) => {
+                console.log('Unable to load decks: '+error);
+                reject(error);
+              });
+          } catch (error) {
+            console.log('Failed to get decks, error: '+error);
+            reject(error);
+          }
+    });
 }

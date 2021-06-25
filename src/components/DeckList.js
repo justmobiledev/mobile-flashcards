@@ -1,35 +1,29 @@
-import React, {useEffect, useState} from 'react';
-import { SafeAreaView, FlatList, TouchableOpacity, StyleSheet, Image, Text, View } from 'react-native';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
-import { getDecks } from '../storage/storageHelper';
-import {convertToArray} from '../utils/utils';
-import colors from '../styles/colors.json';
-import { MaterialCommunityIcons } from '@expo/vector-icons'; 
+import React, {useContext} from 'react';
+import { SafeAreaView, FlatList, StyleSheet, Image, Text, View } from 'react-native';
 import {textStyles} from '../styles/textStyles';
 import {layoutStyles} from '../styles/layoutStyles';
-import {DeckListItem} from './index';
+import DeckListItem from './DeckListItem';
 import {DECK_SCREEN} from '../navigation/ScreenNames';
+import {isEmpty} from 'lodash/fp';
+import {DeckContext} from '../contexts/useDeckContext';
+
 
 export default function DeckList({navigation}) {
-  const [decks, setDecks] = useState(undefined);
+  //const context = useSharedDeckContext();
+  const { isLoading, decks, setSelectedDeck } = useContext(DeckContext);
 
-  useEffect(() => {
-    getDecks().then((dbDecks) => {
-      const _decks = convertToArray(dbDecks);
-      setDecks(_decks);
-    }).catch((error) => {
-      console.log('Unable to load decks: '+error);
-    })
-  },[]);
+  console.log(isLoading);
+  console.log('DeckList decks: ',decks);
 
  const _onItemClicked = deck => {
+   setSelectedDeck(deck.item);
   // Navigate to deck details
-   navigation.navigate(DECK_SCREEN,{deck: deck.item});
+   navigation.navigate(DECK_SCREEN);
  }
 
   const renderDeck = it => {
     const deck = it.item;
-
+    console.log('renderDeck ',deck);
     return (
       <DeckListItem deck={deck} onItemClicked={() => _onItemClicked(it)}/>
     )
@@ -43,11 +37,17 @@ export default function DeckList({navigation}) {
       <View style={styles.mainImageContainer}>
         <Image style={styles.mainImageStyle} source={require('../assets/flashcards_image.jpeg')}/>
       </View>
-      <FlatList
-        data={decks}
-        renderItem={renderDeck}
-        keyExtractor={item => item.title}
-      />
+      {
+        !isEmpty(decks) && (
+          <FlatList
+          data={decks}
+          renderItem={renderDeck}
+          keyExtractor={item => item.title}
+        />
+        )
+      }
+
+
     </SafeAreaView>
   );
 }

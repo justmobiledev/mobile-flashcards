@@ -5,8 +5,8 @@ import {textStyles} from '../styles/textStyles';
 import {layoutStyles} from '../styles/layoutStyles';
 
 export default function DeckListItem({onItemClicked, deck}) {
-  const title = deck.title;
-  const questionCount = deck.questions.length || 0;
+  const title = deck ? deck.title : '';
+  const questionCount = deck ? deck.questions.length : 0;
 
   return (
     <TouchableOpacity onPress={ () => onItemClicked(deck)}>
