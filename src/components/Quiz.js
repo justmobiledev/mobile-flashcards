@@ -63,9 +63,11 @@ export default function Quizz({navigation}) {
 
   return (
     <SafeAreaView style={layoutStyles.screenLayout}>
-      <View style={layoutStyles.headerLayout}>
-        <Text style={textStyles.headerStyle}>Quiz for deck: {selectedDeck?.title || ''} - </Text>
-        <Text style={textStyles.headerStyle}>Question {questionIndex + 1}/{questionCount}</Text>
+      <View style={[layoutStyles.headerLayout,{flexDirection: 'column'}]}>
+        <Text style={textStyles.headerStyle}>Quiz for deck: {selectedDeck?.title || ''}</Text>
+        {!showResults && 
+                <Text style={textStyles.headerStyle}>{questionCount - questionIndex} Questions remaining</Text>
+        }
       </View>
       <View style={layoutStyles.contentLayout}>
         <View style={styles.questionLayout}>

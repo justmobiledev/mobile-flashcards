@@ -16,7 +16,7 @@ export default function DeckListItem({onItemClicked, deck}) {
         <Text style={[textStyles.titleStyle,{marginLeft: 4}]}>{title}</Text>
       </View>
       <View style={[layoutStyles.rowStyle,{marginLeft: 30}]}>
-        <Text style={textStyles.bodyStyle}>{questionCount} Questions</Text>
+        <Text style={textStyles.bodyStyle}>{questionCount} Cards</Text>
       </View>
     </View>
     </TouchableOpacity>

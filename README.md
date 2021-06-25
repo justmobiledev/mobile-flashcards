@@ -15,3 +15,7 @@ npx react-native run-android
 
 iOS:
 npx react-native run-ios
+
+# Tested Platforms:
+Android emulator
+iOS simulator
