@@ -119,7 +119,7 @@ export default function Quizz({navigation}) {
                 (
                   <>
                   <MyButton title="Retake Quizz" isPrimary={true} iconType='correct' onPress={onRetakeQuizPressed}/>
-                  <MyButton title="Return to Deck" isPrimary={false} iconType='deck' onPress={onReturnToDeckPressed}/>
+                  <MyButton title="Return to Deck" isPrimary={false} iconType='return' onPress={onReturnToDeckPressed}/>
                 </>
                 )
               }

@@ -12,14 +12,7 @@ export default function App() {
     // Load initial data
     loadDecks();
 
-    // Run Quiz permission check
-    /* if (Platform.OS === 'ios') {
-      requestNotificationPermisssions();
-    }
-    else if (Platform.OS === 'android'){
-      runNotificationReminderCheck();
-    }*/
-    //runNotificationReminderCheck();
+    // Requestion iOS Notification permissions
     requestNotificationPermisssions();
   },[]);
 

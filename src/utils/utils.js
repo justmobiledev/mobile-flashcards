@@ -1,6 +1,6 @@
 
 
-// Converts an object with properties into an array
+// Converts an object with properties to an array
 export function convertToArray(obj) {
     const array = [];
     if (!obj) {

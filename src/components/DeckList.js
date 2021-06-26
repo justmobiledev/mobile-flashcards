@@ -13,7 +13,7 @@ export default function DeckList({navigation}) {
 
  const _onItemClicked = deck => {
    setSelectedDeck(deck.item);
-   
+
   // Navigate to deck details
    navigation.navigate(DECK_SCREEN);
  }
@@ -43,8 +43,6 @@ export default function DeckList({navigation}) {
         />
         )
       }
-
-
     </SafeAreaView>
   );
 }

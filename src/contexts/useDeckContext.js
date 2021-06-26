@@ -3,7 +3,6 @@ import {dbSetDecks, dbAddCardToDeck, dbAddDeck} from '../storage/storageHelper';
 import starterDecks from '../storage/starterDecks.json';
 import {convertToArray} from '../utils/utils';
 
-
 export const DeckContext = createContext();
 
 export function useDeckContext() {

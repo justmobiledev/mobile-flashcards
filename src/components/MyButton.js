@@ -30,7 +30,10 @@ export default function MyButton({title, isPrimary, iconType, onPress}) {
         }
         else if (iconType === 'correct') {
             return <Ionicons name="checkmark-circle-outline" size={20} color="white" />
-        }      
+        }
+        else if (iconType === 'return') {
+            return  <AntDesign name="back" size={20} color="white" /> 
+        }
         else {
             return null;
         }
