@@ -66,6 +66,6 @@ export function useDeckContext() {
         loadDecks,
         addCartToDeck,
         setSelectedDeck,
-        addDeck
+        addDeck,
     }
 }

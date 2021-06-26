@@ -1,6 +1,7 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
 const DECKS = "@MobileFlashcards:DECKS";
+const QUIZ_COMPLETED = "@MobileFlashcards:QUIZ_COMPLETED";
 
 // loads the initial decks database
 export const dbSetDecks = (decks) => {
@@ -109,5 +110,37 @@ export const dbAddCardToDeck = async(title, card) => {
             console.log('Failed to get decks, error: '+error);
             reject(error);
           }
+    });
+}
+
+// Set's the 'Quiz completed flag'
+export const dbSetQuizCompleted = (flag) => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            await AsyncStorage.setItem(
+                QUIZ_COMPLETED,
+                flag ? 'true' : 'false'
+            );
+            resolve();
+        } catch (error) {
+            console.log('error setting flag: '+error);
+            reject(error);
+        }
+    });
+}
+
+// Gets's the 'Quiz completed flag'
+export const dbGetQuizCompleted = () => {
+    return new Promise(async(resolve, reject) => {
+        try {
+            const res = await AsyncStorage.getItem(
+                QUIZ_COMPLETED
+            );
+            const quizCompleted = res === 'true' ? true : false;
+            resolve(quizCompleted);
+        } catch (error) {
+            console.log('error setting flag: '+error);
+            reject(error);
+        }
     });
 }

@@ -1,9 +1,9 @@
 import React, {useEffect} from 'react';
-import { StyleSheet, View } from 'react-native';
+import { Platform, StyleSheet, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import {MainStackNavigator} from './src/navigation';
-import Spinner from 'react-native-loading-spinner-overlay';
 import {useDeckContext, DeckContext} from './src/contexts/useDeckContext';
+import {requestNotificationPermisssions, runNotificationReminderCheck} from './src/notifications/NotificationManager';
 
 export default function App() {
   const {isLoading, decks, selectedDeck, addDeck, setSelectedDeck, loadDecks, addCartToDeck} = useDeckContext();
@@ -11,6 +11,16 @@ export default function App() {
   useEffect(() => {
     // Load initial data
     loadDecks();
+
+    // Run Quiz permission check
+    /* if (Platform.OS === 'ios') {
+      requestNotificationPermisssions();
+    }
+    else if (Platform.OS === 'android'){
+      runNotificationReminderCheck();
+    }*/
+    //runNotificationReminderCheck();
+    requestNotificationPermisssions();
   },[]);
 
   return (
@@ -19,14 +29,6 @@ export default function App() {
         <NavigationContainer>
           <MainStackNavigator/>
         </NavigationContainer>
-        {
-          isLoading && 
-            <Spinner
-            visible={true}
-            textContent={'Loading...'}
-            textStyle={styles.spinnerTextStyle}
-          />
-        }
       </View>
     </DeckContext.Provider>
   );

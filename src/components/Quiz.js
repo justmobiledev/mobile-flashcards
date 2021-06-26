@@ -7,6 +7,7 @@ import colors from '../styles/colors.json';
 import Toast from 'react-native-toast-message';
 import {DeckContext} from '../contexts/useDeckContext';
 import {isEmpty} from 'lodash/fp';
+import { dbSetQuizCompleted } from '../storage/storageHelper';
 
 export default function Quizz({navigation}) {
   const [questionIndex, setQuestionIndex] = useState(0);
@@ -26,7 +27,13 @@ export default function Quizz({navigation}) {
       setQuestionIndex(questionIndex + 1);
     }
     else {
+      // Quick completed
       setShowResults(true);
+      dbSetQuizCompleted(true).then(() => {
+        console.log('set quick completed flag');
+      }).catch((error) => {
+        console.log('set quick completed flag failed: '+error);
+      });
     }
   }
 
